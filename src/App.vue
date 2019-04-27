@@ -6,15 +6,16 @@
 	<button @click="logMeOut()">Sign out</button>
 	</div>
 <div v-else>
-	<input type ="text" v-model="email">
-	<button @click="logMeIn()">Sign in</button>
+	<login-form @login="logMeIn($event)">Sign in</login-form>
 	</div>
 	</div>
 </template>
 
 <script>
 import "milligram";
+import LoginForm from "./LoginForm";
 export default {
+	components: {LoginForm},
 	data() {
 		return {
 			email: '',
@@ -22,12 +23,16 @@ export default {
 		}
 	},
 	methods: {
-		logMeIn(){
-			this.isAuthenticated = true;
+		logMeIn(username){
+			this.email =  username;
+			this.isAuthenticated = true; 
 		},
-		logMeOut(){
-			this.isAuthenticated = false;
-			this.email = ''
+		enter(){
+			this.$emit
+		},
+		logMeOut(username){
+			this.email =  '';
+			this.isAuthenticated = false; 
 		}
 		}
 }
