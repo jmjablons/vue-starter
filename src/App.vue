@@ -1,9 +1,15 @@
 <template>
 <div>
-<p>{{ email }}</p>
-<input type ="text" v-model="email">
-<button @click="logMeIn()">Sign in</button>
-</div>
+<h1>System zapisów</h1>
+<div v-if="isAuthenticated">
+	<p> Logged as {{ email }}</p>
+	<button @click="logMeOut()">Sign out</button>
+	</div>
+<div v-else>
+	<input type ="text" v-model="email">
+	<button @click="logMeIn()">Sign in</button>
+	</div>
+	</div>
 </template>
 
 <script>
